@@ -1,3 +1,9 @@
+Please save every close:
+
 git add .
 git commit -m "update my part"
 git push
+
+Please update everytime:
+
+git pull
