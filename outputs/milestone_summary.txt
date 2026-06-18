@@ -1,0 +1,30 @@
+Project Milestone Baseline Summary
+==================================
+
+Dataset shape: (159571, 13)
+
+Baseline model:
+TF-IDF + One-vs-Rest Logistic Regression
+Default threshold: 0.5
+
+Overall metrics:
+      metric    value
+    micro_f1 0.660958
+    macro_f1 0.456791
+ weighted_f1 0.651148
+hamming_loss 0.019850
+
+Per-label metrics:
+        label  precision   recall       f1  true_positive  false_positive  false_negative  true_negative  false_positive_rate  false_negative_rate  positive_count_in_validation
+        toxic   0.921256 0.585733 0.716143           1790             153            1266          28706             0.005302             0.414267                          3056
+ severe_toxic   0.596491 0.211838 0.312644             68              46             253          31548             0.001456             0.788162                           321
+      obscene   0.927644 0.583090 0.716076           1000              78             715          30122             0.002583             0.416910                          1715
+       threat   0.857143 0.081081 0.148148              6               1              68          31840             0.000031             0.918919                            74
+       insult   0.851538 0.497522 0.628080            803             140             811          30161             0.004620             0.502478                          1614
+identity_hate   0.730769 0.129252 0.219653             38              14             256          31607             0.000443             0.870748                           294
+
+Next steps:
+- Class weighting for imbalance mitigation
+- Per-label threshold tuning for rare labels
+- Structured error analysis on false positives and false negatives
+- Single-label vs multi-label error comparison

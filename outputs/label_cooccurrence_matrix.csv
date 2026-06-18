@@ -1,0 +1,7 @@
+,toxic,severe_toxic,obscene,threat,insult,identity_hate
+toxic,15294,1595,7926,449,7344,1302
+severe_toxic,1595,1595,1517,112,1371,313
+obscene,7926,1517,8449,301,6155,1032
+threat,449,112,301,478,307,98
+insult,7344,1371,6155,307,7877,1160
+identity_hate,1302,313,1032,98,1160,1405

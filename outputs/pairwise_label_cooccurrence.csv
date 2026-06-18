@@ -1,0 +1,16 @@
+label_pair,cooccurrence_count
+toxic + obscene,7926
+toxic + insult,7344
+obscene + insult,6155
+toxic + severe_toxic,1595
+severe_toxic + obscene,1517
+severe_toxic + insult,1371
+toxic + identity_hate,1302
+insult + identity_hate,1160
+obscene + identity_hate,1032
+toxic + threat,449
+severe_toxic + identity_hate,313
+threat + insult,307
+obscene + threat,301
+severe_toxic + threat,112
+threat + identity_hate,98

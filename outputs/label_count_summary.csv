@@ -1,0 +1,5 @@
+category,count,percentage
+clean_comments_all_labels_0,143346,0.8983211235124177
+toxic_comments_at_least_one_label,16225,0.10167887648758234
+single_label_toxic_comments,6360,0.03985686622255924
+multi_label_toxic_comments,9865,0.06182201026502309
