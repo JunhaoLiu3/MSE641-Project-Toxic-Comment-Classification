@@ -1,13 +1,33 @@
-# Project-Milestone-Error-Analysis-for-Toxic-Comment
+<div align="center">
 
-Team –
-Cecilia Wang 21226500
-Junhao Liu 20960352
+# Toxic Comment Classification
 
-Project Milestone: Systematic Error Analysis for Multi-Label Toxic Comment Classification
+### Systematic Error Analysis for Multi-Label Classification
 
-This is the project milestone with baseline model — June 16, 2026
+**Cecilia Wang (21226500) · Junhao Liu (20960352)**
 
-Final Project:
+</div>
 
-This is the subsequent code  — July 21, 2026
+---
+
+## Project Overview
+
+This project analyzes systematic prediction errors in a multi-label toxic comment classification model and explores methods to improve classification performance.
+
+---
+
+## Project Progress
+
+### Baseline Model and Milestone Analysis
+
+**Completed:** June 16, 2026
+
+This section develops the baseline model and evaluates its performance across different toxicity labels. The results are used to identify major error patterns and areas for improvement.
+
+---
+
+### Final Project Development
+
+**Updated:** July 21, 2026
+
+This section contains the subsequent code and analysis developed after the project milestone, including further error analysis and model improvement methods.
