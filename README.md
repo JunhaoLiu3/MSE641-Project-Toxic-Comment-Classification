@@ -12,7 +12,8 @@
 
 ## Project Overview
 
-This project analyzes systematic prediction errors in a multi-label toxic comment classification model and explores methods to improve classification performance.
+This project focuses on **systematic error analysis for multi-label toxic comment classification**.  
+The goal is to evaluate how a baseline model performs across different toxicity labels and identify common error patterns.
 
 ---
 
