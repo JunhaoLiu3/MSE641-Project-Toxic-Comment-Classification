@@ -4,6 +4,7 @@ git add .
 git commit -m "update my part"
 git push
 
+
 Please update everytime:
 
 git pull
@@ -11,3 +12,11 @@ git pull
 need to run:
 pip install -r requirements.txt
 python baseline.py
+
+pip install -r requirements.txt
+python final_project.py
+
+python -m pip install --upgrade pip
+python -m pip install numpy pandas scikit-learn matplotlib scipy torch transformers accelerate datasets tqdm
+
+
