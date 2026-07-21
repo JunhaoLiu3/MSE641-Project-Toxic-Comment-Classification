@@ -5,8 +5,8 @@
 ### Systematic Error Analysis for Multi-Label Classification
 
 Team –
-Cecilia Wang 21226500
-Junhao Liu 20960352
+Cecilia Wang (21226500) & 
+Junhao Liu (20960352)
 
 </div>
 
