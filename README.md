@@ -1,10 +1,15 @@
 <div align="center">
 
-# Toxic Comment Classification
+# # MSE641 Toxic Comment Classification
 
 ### Systematic Error Analysis for Multi-Label Classification
 
-**Cecilia Wang (21226500) · Junhao Liu (20960352)**
+```markdown
+## Team Members
+
+- Cecilia Wang — 21226500
+- Junhao Liu — 20960352
+```
 
 </div>
 
