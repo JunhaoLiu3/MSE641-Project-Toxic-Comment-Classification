@@ -23,6 +23,12 @@ python -m pip install torch transformers datasets accelerate
 
 
 Macbook Terminal : 
+cd Desktop
+
+git clone https://github.com/JunhaoLiu3/MSE641-Project-Toxic-Comment-Classification.git
+
+cd MSE641-Project-Toxic-Comment-Classification
+
 conda create -n mse641 python=3.11 -y
 conda activate mse641
 
