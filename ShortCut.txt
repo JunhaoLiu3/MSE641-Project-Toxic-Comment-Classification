@@ -18,5 +18,18 @@ python final_project.py
 
 python -m pip install --upgrade pip
 python -m pip install numpy pandas scikit-learn matplotlib scipy torch transformers accelerate datasets tqdm
+python -m pip install torch transformers tqdm
+python -m pip install torch transformers datasets accelerate
 
 
+Macbook Terminal : 
+conda create -n mse641 python=3.11 -y
+conda activate mse641
+
+python -m pip install --upgrade pip
+python -m pip install torch transformers datasets accelerate pandas numpy scipy scikit-learn tqdm
+
+python -c "import platform, torch; print('Architecture:', platform.machine()); print('Torch:', torch.__version__); print('MPS available:', torch.backends.mps.is_available())"
+
+Everytime:
+conda activate mse641

@@ -1,0 +1,6 @@
+specific_label,is_rare_label,true_pair_count,toxic_caught_count,partial_miss_count,partial_miss_rate
+severe_toxic,True,321,301,233,0.7740863787375415
+obscene,False,1614,1330,340,0.2556390977443609
+threat,True,73,56,50,0.8928571428571429
+insult,False,1501,1216,418,0.34375
+identity_hate,True,269,205,168,0.8195121951219512
