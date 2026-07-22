@@ -1,0 +1,7 @@
+model,label,precision,recall,f1,false_positive,false_negative
+distilbert,toxic,0.9574468085106383,0.45918367346938777,0.6206896551724138,2,53
+distilbert,severe_toxic,0.0,0.0,0.0,0,7
+distilbert,obscene,1.0,0.5686274509803921,0.725,0,22
+distilbert,threat,0.0,0.0,0.0,0,3
+distilbert,insult,0.9444444444444444,0.34,0.5,1,33
+distilbert,identity_hate,0.0,0.0,0.0,0,8

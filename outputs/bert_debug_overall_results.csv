@@ -1,0 +1,2 @@
+model,micro_f1,macro_f1,weighted_f1,hamming_loss,exact_match_accuracy,macro_roc_auc
+distilbert,0.5852090032154341,0.3076149425287356,0.5659105355156524,0.0215,0.916,0.9155925667544814
