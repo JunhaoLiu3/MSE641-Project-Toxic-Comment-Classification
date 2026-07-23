@@ -2,12 +2,12 @@ model,specific_label,toxic_caught_count,partial_miss_count,partial_miss_rate
 baseline,severe_toxic,301,233,0.7740863787375415
 baseline,threat,56,50,0.8928571428571429
 baseline,identity_hate,205,168,0.8195121951219512
-threshold_tuned,severe_toxic,312,99,0.3173076923076923
+threshold_tuned,severe_toxic,311,101,0.3247588424437299
 threshold_tuned,threat,64,31,0.484375
-threshold_tuned,identity_hate,232,99,0.4267241379310345
+threshold_tuned,identity_hate,232,95,0.4094827586206896
 class_weight_balanced,severe_toxic,316,51,0.1613924050632911
 class_weight_balanced,threat,68,15,0.2205882352941176
-class_weight_balanced,identity_hate,253,49,0.1936758893280632
+class_weight_balanced,identity_hate,252,49,0.1944444444444444
 distilbert,severe_toxic,320,245,0.765625
 distilbert,threat,70,41,0.5857142857142857
 distilbert,identity_hate,259,125,0.4826254826254826

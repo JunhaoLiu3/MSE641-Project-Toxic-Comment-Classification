@@ -2,9 +2,9 @@ model,specific_label,toxic_caught_count,partial_miss_count,partial_miss_rate
 baseline,severe_toxic,301,233,0.7740863787375415
 baseline,threat,56,50,0.8928571428571429
 baseline,identity_hate,205,168,0.8195121951219512
-threshold_tuned,severe_toxic,312,99,0.3173076923076923
+threshold_tuned,severe_toxic,311,101,0.3247588424437299
 threshold_tuned,threat,64,31,0.484375
-threshold_tuned,identity_hate,232,99,0.4267241379310345
+threshold_tuned,identity_hate,232,95,0.40948275862068967
 class_weight_balanced,severe_toxic,316,51,0.16139240506329114
 class_weight_balanced,threat,68,15,0.22058823529411764
-class_weight_balanced,identity_hate,253,49,0.19367588932806323
+class_weight_balanced,identity_hate,252,49,0.19444444444444445
