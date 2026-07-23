@@ -1360,7 +1360,7 @@ print("=" * 60)
 # ------------------------------------------------------------
 # 4.1 Configuration
 
-RUN_BERT = True
+RUN_BERT = False
 BERT_DEBUG = False
 
 BERT_MODEL_NAME = "distilbert-base-uncased"
