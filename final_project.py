@@ -289,6 +289,7 @@ print(f"TF-IDF validation shape: {X_val_tfidf.shape}")
 base_lr = LogisticRegression(
     max_iter=1000,
     solver="liblinear"
+     random_state=42
 )
 
 model = OneVsRestClassifier(base_lr)
@@ -1865,6 +1866,18 @@ final_groups = pd.concat(
     subset=["model", "group"],
     keep="last"
 )
+
+# Keep only metrics available for all four models.
+final_groups = final_groups[
+    [
+        "model",
+        "group",
+        "comment_count",
+        "exact_match_accuracy",
+        "micro_recall",
+        "micro_f1"
+    ]
+]
 
 final_partial = pd.concat(
     [part3_partial, bert_partial],
