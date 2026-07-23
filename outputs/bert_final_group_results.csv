@@ -1,0 +1,3 @@
+model,group,comment_count,exact_match_accuracy,micro_recall,micro_f1
+distilbert,single_label,1220,0.3295081967213115,0.5459016393442623,0.5839544059622972
+distilbert,multi_label,2024,0.45553359683794464,0.8172189955585925,0.8667451761934958
