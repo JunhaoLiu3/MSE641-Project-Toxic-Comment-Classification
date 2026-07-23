@@ -1361,7 +1361,7 @@ print("=" * 60)
 # 4.1 Configuration
 
 RUN_BERT = False
-BERT_DEBUG = False
+BERT_DEBUG = True
 
 BERT_MODEL_NAME = "distilbert-base-uncased"
 BERT_SEED = 42
@@ -1735,3 +1735,302 @@ if RUN_BERT:
 
 
 
+# ============================================================
+# PART 5: FINAL COMPARISON AND FIGURES
+# Report-ready tables and visualizations
+# ============================================================
+
+"""
+This section combines the Logistic Regression and DistilBERT
+results into final report-ready tables and figures.
+"""
+
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+print("\n" + "=" * 60)
+print("PART 5: FINAL COMPARISON AND FIGURES")
+print("=" * 60)
+
+# ------------------------------------------------------------
+# 5.1 Load Part 3 and Part 4 results
+
+required_files = {
+    "part3_overall": "part3_overall_comparison.csv",
+    "part3_labels": "part3_per_label_comparison.csv",
+    "part3_groups": "part3_group_comparison.csv",
+    "part3_partial": "part3_partial_miss_comparison.csv",
+    "bert_overall": "bert_final_overall_results.csv",
+    "bert_labels": "bert_final_per_label_results.csv",
+    "bert_groups": "bert_final_group_results.csv",
+    "bert_partial": "bert_final_partial_miss_results.csv"
+}
+
+for filename in required_files.values():
+    file_path = os.path.join(OUTPUT_DIR, filename)
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(
+            f"Missing required result file: {file_path}"
+        )
+
+part3_overall = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["part3_overall"])
+)
+
+part3_labels = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["part3_labels"])
+)
+
+part3_groups = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["part3_groups"])
+)
+
+part3_partial = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["part3_partial"])
+)
+
+bert_overall = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["bert_overall"])
+)
+
+bert_labels = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["bert_labels"])
+)
+
+bert_groups = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["bert_groups"])
+)
+
+bert_partial = pd.read_csv(
+    os.path.join(OUTPUT_DIR, required_files["bert_partial"])
+)
+
+# ------------------------------------------------------------
+# 5.2 Create final comparison tables
+
+model_order = [
+    "baseline",
+    "threshold_tuned",
+    "class_weight_balanced",
+    "distilbert"
+]
+
+overall_columns = [
+    "model",
+    "micro_f1",
+    "macro_f1",
+    "weighted_f1",
+    "hamming_loss",
+    "exact_match_accuracy",
+    "macro_roc_auc"
+]
+
+final_overall = pd.concat(
+    [part3_overall, bert_overall],
+    ignore_index=True
+)
+
+final_overall = final_overall[
+    overall_columns
+].drop_duplicates(
+    subset="model",
+    keep="last"
+)
+
+final_overall["model"] = pd.Categorical(
+    final_overall["model"],
+    categories=model_order,
+    ordered=True
+)
+
+final_overall = final_overall.sort_values(
+    "model"
+).reset_index(drop=True)
+
+final_per_label = pd.concat(
+    [part3_labels, bert_labels],
+    ignore_index=True
+).drop_duplicates(
+    subset=["model", "label"],
+    keep="last"
+)
+
+final_groups = pd.concat(
+    [part3_groups, bert_groups],
+    ignore_index=True
+).drop_duplicates(
+    subset=["model", "group"],
+    keep="last"
+)
+
+final_partial = pd.concat(
+    [part3_partial, bert_partial],
+    ignore_index=True
+).drop_duplicates(
+    subset=["model", "specific_label"],
+    keep="last"
+)
+
+rare_labels = [
+    "severe_toxic",
+    "threat",
+    "identity_hate"
+]
+
+final_rare_labels = final_per_label[
+    final_per_label["label"].isin(rare_labels)
+].copy()
+
+final_overall.to_csv(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_overall_model_comparison.csv"
+    ),
+    index=False
+)
+
+final_per_label.to_csv(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_per_label_model_comparison.csv"
+    ),
+    index=False
+)
+
+final_rare_labels.to_csv(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_rare_label_comparison.csv"
+    ),
+    index=False
+)
+
+final_groups.to_csv(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_group_comparison.csv"
+    ),
+    index=False
+)
+
+final_partial.to_csv(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_partial_miss_comparison.csv"
+    ),
+    index=False
+)
+
+print("\nFinal overall model comparison:")
+print(final_overall)
+
+print("\nFinal rare-label comparison:")
+print(
+    final_rare_labels[
+        ["model", "label", "precision", "recall", "f1"]
+    ]
+)
+
+# ------------------------------------------------------------
+# 5.3 Overall F1 comparison figure
+
+overall_plot = final_overall.set_index("model")[
+    ["micro_f1", "macro_f1"]
+]
+
+ax = overall_plot.plot(
+    kind="bar",
+    figsize=(9, 5)
+)
+
+ax.set_title("Overall Model Performance")
+ax.set_xlabel("Model")
+ax.set_ylabel("F1 Score")
+ax.set_ylim(0, 1)
+ax.tick_params(axis="x", rotation=20)
+ax.legend(["Micro-F1", "Macro-F1"])
+
+plt.tight_layout()
+plt.savefig(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_overall_f1_comparison.png"
+    ),
+    dpi=300
+)
+plt.close()
+
+# ------------------------------------------------------------
+# 5.4 Rare-label recall figure
+
+rare_recall_plot = final_rare_labels.pivot(
+    index="model",
+    columns="label",
+    values="recall"
+)
+
+rare_recall_plot = rare_recall_plot.reindex(
+    model_order
+)
+
+ax = rare_recall_plot.plot(
+    kind="bar",
+    figsize=(9, 5)
+)
+
+ax.set_title("Rare-Label Recall by Model")
+ax.set_xlabel("Model")
+ax.set_ylabel("Recall")
+ax.set_ylim(0, 1)
+ax.tick_params(axis="x", rotation=20)
+
+plt.tight_layout()
+plt.savefig(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_rare_label_recall.png"
+    ),
+    dpi=300
+)
+plt.close()
+
+# ------------------------------------------------------------
+# 5.5 Partial-miss comparison figure
+
+partial_plot = final_partial.pivot(
+    index="model",
+    columns="specific_label",
+    values="partial_miss_rate"
+)
+
+partial_plot = partial_plot.reindex(
+    model_order
+)
+
+ax = partial_plot.plot(
+    kind="bar",
+    figsize=(9, 5)
+)
+
+ax.set_title("Rare-Label Partial-Miss Rate")
+ax.set_xlabel("Model")
+ax.set_ylabel("Partial-Miss Rate")
+ax.set_ylim(0, 1)
+ax.tick_params(axis="x", rotation=20)
+
+plt.tight_layout()
+plt.savefig(
+    os.path.join(
+        OUTPUT_DIR,
+        "final_partial_miss_comparison.png"
+    ),
+    dpi=300
+)
+plt.close()
+
+
+print("\nPart 5 completed.")
+print("Final tables and figures saved in outputs/.")
