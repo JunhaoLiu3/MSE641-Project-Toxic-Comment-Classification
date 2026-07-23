@@ -288,7 +288,7 @@ print(f"TF-IDF validation shape: {X_val_tfidf.shape}")
 # the next stage of the project
 base_lr = LogisticRegression(
     max_iter=1000,
-    solver="liblinear"
+    solver="liblinear",
      random_state=42
 )
 
