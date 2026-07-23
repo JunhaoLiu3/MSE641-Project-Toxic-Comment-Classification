@@ -35,3 +35,71 @@ Everytime:
 conda activate mse641
 
 python final_project.py
+
+
+
+1. 平时不跑 BERT - 适合你只想跑 Part 1–3 / Part 5： FF
+
+python - <<'PY'
+from pathlib import Path
+
+p = Path("final_project.py")
+s = p.read_text()
+
+s = s.replace("RUN_BERT = True", "RUN_BERT = False")
+s = s.replace("BERT_DEBUG = True", "BERT_DEBUG = False")
+
+p.write_text(s)
+print("Set to: RUN_BERT=False, BERT_DEBUG=False")
+PY
+
+确认：
+grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
+
+
+2. 快速测试 BERT - 适合你想确认 Part 4 能不能跑，不跑完整： TT
+
+python - <<'PY'
+from pathlib import Path
+
+p = Path("final_project.py")
+s = p.read_text()
+
+s = s.replace("RUN_BERT = False", "RUN_BERT = True")
+s = s.replace("BERT_DEBUG = False", "BERT_DEBUG = True")
+
+p.write_text(s)
+print("Set to: RUN_BERT=True, BERT_DEBUG=True")
+PY
+
+确认：
+grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
+
+
+3. 正式跑 final BERT - 适合最后真的要重新训练完整 BERT：TF
+
+python - <<'PY'
+from pathlib import Path
+
+p = Path("final_project.py")
+s = p.read_text()
+
+s = s.replace("RUN_BERT = False", "RUN_BERT = True")
+s = s.replace("BERT_DEBUG = True", "BERT_DEBUG = False")
+
+p.write_text(s)
+print("Set to: RUN_BERT=True, BERT_DEBUG=False")
+PY
+
+确认：
+grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
+
+
+
+然后每次改完，要跑代码就：
+
+python final_project.py
+
+如果是 MacBook 防睡眠跑：
+
+caffeinate -dims python final_project.py
