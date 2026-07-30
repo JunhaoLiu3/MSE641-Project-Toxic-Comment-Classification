@@ -47,7 +47,7 @@ MSE641-Project-Toxic-Comment-Classification/
 │   ├── final_rare_label_comparison.csv
 │   ├── final_group_comparison.csv
 │   └── final_partial_miss_comparison.csv
-│
+│         Only selected report-relevant outputs are shown below.
 ├── baseline.py
 ├── final_project.py
 ├── requirements.txt
@@ -112,7 +112,7 @@ The final project extends the milestone baseline with structured error analysis,
 - rare-label performance comparison
 - representative false-positive and false-negative examples
 
-A partial miss is defined as a case where the model detects general toxicity but misses a more specific rare label such as `severe_toxic`, `threat`, or `identity_hate`.
+A partial miss occurs when toxic is correctly detected but another true, more specific toxicity label is missed. The final comparison focuses particularly on the rare labels severe_toxic, threat, and identity_hate.
 
 ### 5. Imbalance Mitigation
 
@@ -137,7 +137,7 @@ Configuration:
 - evaluation batch size: 16
 - weight decay: 0.01
 - epochs: 2
-- output layer: six independent sigmoid labels
+- output layer: six-label multi-label classification head with sigmoid probabilities
 - prediction threshold: 0.5
 
 ---
