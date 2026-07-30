@@ -9,7 +9,7 @@ Please update everytime:
 
 git pull
 
-need to run:
+Need to run:
 pip install -r requirements.txt
 python baseline.py
 
@@ -38,7 +38,7 @@ python final_project.py
 
 
 
-1. 平时不跑 BERT - 适合你只想跑 Part 1–3 / Part 5： FF
+1. NO BERT - Run Only Part 1–3 / Part 5： FalseFalse
 
 python - <<'PY'
 from pathlib import Path
@@ -53,11 +53,11 @@ p.write_text(s)
 print("Set to: RUN_BERT=False, BERT_DEBUG=False")
 PY
 
-确认：
+Confirm：
 grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
 
 
-2. 快速测试 BERT - 适合你想确认 Part 4 能不能跑，不跑完整： TT
+2. Quick BERT - Confirm Part 4, not complete: TrueTrue
 
 python - <<'PY'
 from pathlib import Path
@@ -72,11 +72,11 @@ p.write_text(s)
 print("Set to: RUN_BERT=True, BERT_DEBUG=True")
 PY
 
-确认：
+Confirm：
 grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
 
 
-3. 正式跑 final BERT - 适合最后真的要重新训练完整 BERT：TF
+3. Formal run BERT - Completely BERT：TrueFalse
 
 python - <<'PY'
 from pathlib import Path
@@ -91,15 +91,15 @@ p.write_text(s)
 print("Set to: RUN_BERT=True, BERT_DEBUG=False")
 PY
 
-确认：
+Confirm：
 grep -n "RUN_BERT\|BERT_DEBUG" final_project.py
 
 
 
-然后每次改完，要跑代码就：
+every change：
 
 python final_project.py
 
-如果是 MacBook 防睡眠跑：
+MacBook 防睡眠跑：
 
 caffeinate -dims python final_project.py
